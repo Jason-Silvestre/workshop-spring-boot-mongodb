@@ -2,6 +2,7 @@ package com.jasonsilvestre.workshopmongo.services;
 
 import com.jasonsilvestre.workshopmongo.domain.User;
 
+import com.jasonsilvestre.workshopmongo.dto.UserDTO;
 import com.jasonsilvestre.workshopmongo.repository.UserRepository;
 
 import com.jasonsilvestre.workshopmongo.services.exception.ObjectNotFoundException;
@@ -25,6 +26,14 @@ public class UserService {
     public User findById(String id) {
         Optional<User> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+    }
+
+    public User insert(User obj) {
+        return repo.insert(obj);
+    }
+
+    public User fromDTO(UserDTO objDto) {
+        return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
     }
 
 }
