@@ -21,7 +21,6 @@ public class User implements Serializable {
     @DBRef(lazy = true)
     private List<Post> posts = new ArrayList<>();
 
-
     public User() {
     }
 
